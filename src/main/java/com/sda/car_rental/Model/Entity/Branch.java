@@ -5,28 +5,34 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Branches")
-public class Branches {
+@Table(name = "BRANCH")
+public class Branch {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
-    @Column(name = "EMPLOYERS")
+
+    @Column(name = "EMPLOYERS", nullable = false)
     private String employers;
-    @Column(name = "ADRESS")
-    private String adress;
-    @Column(name = "CAR_LIST")
-    private String carList;
-    @Id
-    @Column(name = "COMPANY_ID")
+
+    @Column(name = "ADDRESS", nullable = false)
+    private String address;
+
+    @Column(name = "COMPANY_ID", nullable = false)
     private long companyId;
 
+    @OneToMany(mappedBy = "currentBranch")
+    private List<Car> cars;
+
+    @OneToMany(mappedBy = "branch")
+    private List<Employee> employees;
 }
