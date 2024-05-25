@@ -1,7 +1,8 @@
 package com.sda.car_rental.Model.Entity;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
@@ -25,6 +26,11 @@ public class RentalCompany {
         this.owner = owner;
         this.branches = branches;
     }
+
+    public RentalCompany() {
+        
+    }
+
 
     public long getId() {
         return id;
