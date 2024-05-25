@@ -10,13 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CarCategory")
-public class CarCategory {
+@Table(name = "Roles")
+public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String category;
-
-
+    private String roles;
 }
