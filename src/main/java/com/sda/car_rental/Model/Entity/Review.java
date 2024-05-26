@@ -14,7 +14,8 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String review;
+    private String name;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "car_id")

@@ -1,3 +1,5 @@
+package com.sda.car_rental.Model.Controller;
+
 import com.sda.car_rental.Model.Entity.Review;
 import com.sda.car_rental.Model.Repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +43,8 @@ public class ReviewController {
         if (review.isPresent()) {
             Review updatedReview = review.get();
             updatedReview.setReview(reviewDetails.getReview());
-            updatedReview.setCar(reviewDetails.getContent());
-            updatedReview.setReview(reviewDetails.getRating());
+//            updatedReview.setCar(reviewDetails.getContent());
+//            updatedReview.setReview(reviewDetails.getRating());
             return new ResponseEntity<>(reviewRepository.save(updatedReview), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
