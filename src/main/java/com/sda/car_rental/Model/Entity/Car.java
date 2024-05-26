@@ -26,7 +26,7 @@ public class Car {
     private Status status;
 
     @ManyToOne
-    private Branches currentBranch;
+    private Branch currentBranch;
 
     public enum Status {
         AVAILABLE,

@@ -1,10 +1,14 @@
 package com.sda.car_rental.Model.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -33,11 +37,11 @@ public class Booking {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
-    private CarList car;
+    private Car car;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "branch_id", referencedColumnName = "id")
-    private Branches branch;
+    private Branch branch;
 
     public Long getId() {
         return id;
@@ -87,19 +91,5 @@ public class Booking {
         this.customer = customer;
     }
 
-    public CarList getCar() {
-        return car;
-    }
 
-    public void setCar(CarList car) {
-        this.car = car;
-    }
-
-    public Branches getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branches branch) {
-        this.branch = branch;
-    }
 }
