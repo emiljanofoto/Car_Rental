@@ -1,38 +1,31 @@
 package com.sda.car_rental.Model.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "BRANCH")
+@Table(name = "branches")
 public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private long id;
+    private Long id;
 
-    @Column(name = "EMPLOYERS", nullable = false)
-    private String employers;
-
-    @Column(name = "ADDRESS", nullable = false)
     private String address;
+    private String city;
 
-    @Column(name = "COMPANY_ID", nullable = false)
-    private long companyId;
+    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Employee> employees;
 
-    @OneToMany(mappedBy = "currentBranch")
+    @OneToMany(mappedBy = "currentBranch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Car> cars;
 
-    @OneToMany(mappedBy = "branch")
-    private List<Employee> employees;
+    @ManyToOne
+    @JoinColumn(name = "rental_company_id")
+    private RentalCompany rentalCompany;
 }

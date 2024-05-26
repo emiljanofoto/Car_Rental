@@ -3,12 +3,15 @@ package com.sda.car_rental.Model.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "cars")
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +34,9 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CarCategory category;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Review> reviews;
 
     public enum Status {
         AVAILABLE,

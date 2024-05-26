@@ -1,19 +1,22 @@
 package com.sda.car_rental.Model.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "Review")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "reviews") // Use plural for table name to follow conventions
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String review;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 }

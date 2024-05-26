@@ -1,19 +1,17 @@
 package com.sda.car_rental.Model.Entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Employees")
+@Table(name = "employees")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,4 +29,7 @@ public class Employee {
     @JoinColumn(name = "branch_id", referencedColumnName = "id")
     private Branch branch;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
