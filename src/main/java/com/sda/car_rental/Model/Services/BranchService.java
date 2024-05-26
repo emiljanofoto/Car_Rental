@@ -2,15 +2,16 @@ package com.sda.car_rental.Model.Services;
 
 import com.sda.car_rental.Model.Entity.Branch;
 import com.sda.car_rental.Model.Repository.BranchRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@AllArgsConstructor
 @Service
 public class BranchService {
 
-    @Autowired
+
     private BranchRepository branchRepository;
 
     public List<Branch> findAll() {

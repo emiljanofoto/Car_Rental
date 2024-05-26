@@ -10,8 +10,9 @@ import java.util.List;
 @Service
 public class CarService {
 
-    @Autowired
+
     private CarRepository carRepository;
+
 
     public List<Car> findAll() {
         return carRepository.findAll();
