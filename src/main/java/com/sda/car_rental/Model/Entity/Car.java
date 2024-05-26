@@ -1,19 +1,18 @@
 package com.sda.car_rental.Model.Entity;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@Entity
+@Table(name = "cars")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String brand;
     private String model;
     private String bodyType;
@@ -26,7 +25,12 @@ public class Car {
     private Status status;
 
     @ManyToOne
+    @JoinColumn(name = "branch_id")
     private Branch currentBranch;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CarCategory category;
 
     public enum Status {
         AVAILABLE,

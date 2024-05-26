@@ -31,12 +31,4 @@ public class Employee {
     @JoinColumn(name = "branch_id", referencedColumnName = "id")
     private Branch branch;
 
-    @ManyToMany
-    @JoinTable(
-            name = "EMPLOYEE_ROLES",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Roles> roles;
-
 }

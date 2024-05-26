@@ -1,15 +1,15 @@
 package com.sda.car_rental.Model.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CAR_CATEGORY")
+@Table(name = "car_categories")
 public class CarCategory {
 
     @Id
@@ -18,4 +18,9 @@ public class CarCategory {
 
     @Column(nullable = false, unique = true)
     private String category;
+
+    @OneToMany(mappedBy = "category")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Car> cars;
 }
