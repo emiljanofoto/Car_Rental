@@ -1,5 +1,3 @@
-package com.sda.car_rental.Model.Controller;
-
 import com.sda.car_rental.Model.Entity.Review;
 import com.sda.car_rental.Model.Repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
