@@ -42,7 +42,7 @@ public class ReviewController {
         Optional<Review> review = reviewRepository.findById(id);
         if (review.isPresent()) {
             Review updatedReview = review.get();
-            updatedReview.setReview(reviewDetails.getReview());
+//            updatedReview.setReview(reviewDetails.getReview());
 //            updatedReview.setCar(reviewDetails.getContent());
 //            updatedReview.setReview(reviewDetails.getRating());
             return new ResponseEntity<>(reviewRepository.save(updatedReview), HttpStatus.OK);
